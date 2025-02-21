@@ -111,24 +111,6 @@ def srt2ass(input_file,sub_style, is_split, split_method):
 
     subLines += dlgLines + "\n"
 
-    print(subLines)
-
-    if is_split == "Yes" and split_method == 'Punctuation':
-        combined_lines = []
-        temp_sentence = ""
-
-        for i in subLines:
-            i = i.replace('\n', "")
-            temp_sentence += i
-            if i.strip().endswith('.'):
-                combined_lines.append(temp_sentence.strip())
-                temp_sentence = ""
-
-        if temp_sentence:  # In case the last segment didn't end with a period
-            combined_lines.append(temp_sentence.strip())
-
-        subLines = combined_lines + "\n"
-
     subLines = re.sub(r'\d(\d:\d{2}:\d{2}),(\d{2})\d', '\\1.\\2', subLines)
     subLines = re.sub(r'\s+-->\s+', ',', subLines)
     # replace style
