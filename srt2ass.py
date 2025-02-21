@@ -96,10 +96,10 @@ def srt2ass(input_file,sub_style, is_split, split_method):
                         else:
                             dlgLines += line
                     elif is_split == "Yes" and split_method == 'Punctuation':
-                        split_string = dlg_string.replace('. ', '|')
+                        split_string = dlg_string.replace('.', '|')
                         # print(split_string)
                         if len(split_string.split('|')) > 1:
-                            dlgLines += (split_string.replace('|', dlgLines))
+                            dlgLines += (split_string.replace('|',"(adjust_required)\n" + dlgLines)) + "(adjust_required)"
                         else:
                             dlgLines += line
                     else:
@@ -108,6 +108,7 @@ def srt2ass(input_file,sub_style, is_split, split_method):
                     dlgLines += "\n" + line
             lineCount += 1
         ln += 1
+
 
     subLines += dlgLines + "\n"
 
