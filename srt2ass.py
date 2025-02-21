@@ -99,7 +99,7 @@ def srt2ass(input_file,sub_style, is_split, split_method):
                         split_string = dlg_string.replace('. ', '|')
                         # print(split_string)
                         if len(split_string.split('|')) > 1:
-                            dlgLines += (split_string.replace('|', dlgLines))
+                            dlgLines += split_string.replace('|', "\n")
                         else:
                             dlgLines += line
                     else:
